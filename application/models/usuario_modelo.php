@@ -12,7 +12,7 @@ class usuario_modelo extends CI_Model{
 
   function cargaUSu($id){
     $usuario ="";
-    $this->db->where('idusuarios=',$id);
+    $this->db->where('id=',$id);
     $query = $this->db->get('usuarios');
     $rs = $query->result();
     if(count($rs) > 0){
@@ -29,7 +29,7 @@ class usuario_modelo extends CI_Model{
   function insertarUsu($usuario) {
     $id = $usuario['id'];
     if($id+0 > 0) {
-      $this->db->where('idusuarios=',$id);
+      $this->db->where('id=',$id);
       unset($usuario['id']);
       $this->db->update('usuarios',$usuario);
     }else{
@@ -46,7 +46,7 @@ class usuario_modelo extends CI_Model{
     $rs = $query->result();
     if(count($rs) > 0){
       $usuario = $rs[0];
-      return $usuario->idusuarios;
+      return $usuario->id;
     }
     $todos = $this->db->query('SELECT count(*) AS nr FROM usuarios');
     $nn = $todos->result();

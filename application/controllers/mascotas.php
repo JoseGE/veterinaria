@@ -7,7 +7,7 @@ class Mascotas extends CI_Controller{
   {
     parent::__construct();
 
-    $this->load->model(array('mascotas_modelo'));
+    $this->load->model(array('Mascotas_modelo'));
     //Codeigniter : Write Less Do More
   }
 
@@ -15,7 +15,7 @@ class Mascotas extends CI_Controller{
   {
     $data['titulo'] = "Veterinaria";
     //lista todas las mascotas para crear una lista y mostrarla en la principal
-    $data['mascotas'] = $this->mascotas_modelo->mascotas();
+    $data['mascotas'] = $this->Mascotas_modelo->mascotas();
     $this->load->view('secciones/inicio',$data);
 
   }
@@ -38,8 +38,9 @@ class Mascotas extends CI_Controller{
       }else{
         $_POST['foto']='N';
       }
-      $id=$this->mascotas_modelo->regMascota($_POST);
-      $this->mascotas_modelo->subir_fichero($id);
+      $id=$this->Mascotas_modelo->regMascota($_POST);
+      $this->Mascotas_modelo->subir_fichero($id);
+      print "<script type=\"text/javascript\">alert('Registro de mascota {$_POST["nombre"]} correcto'); window.location.href = \"/veterinaria/mascotas/registro\";</script>";
     }
   }
 }

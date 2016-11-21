@@ -33,7 +33,7 @@ class Mascotas_modelo extends CI_Model{
     }
 
     function mascotas() {
-      $query =  $this->db->get('mascota');
+      $query = $this->db->get('mascota');
       return $query->result();
     }
 
@@ -41,12 +41,13 @@ class Mascotas_modelo extends CI_Model{
 
       $foto = 'foto';
            $config['upload_path'] = "fotos/";
-           $config['file_name'] = "mascota_{$id}.png";
-           $config['allowed_types'] = "gif|jpg|jpeg|png";
+           $config['file_name'] = "mascota_{$id}";
+           $config['allowed_types'] = "*";
            $config['max_size'] = "50000";
            $config['max_width'] = "2000";
            $config['max_height'] = "2000";
-
+           $config['file_ext']=".png";
+           $config['image_type'] = "png";
            $this->load->library('upload', $config);
 
            if (!$this->upload->do_upload($foto)) {

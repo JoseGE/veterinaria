@@ -10,7 +10,7 @@ class Seguridad extends CI_Controller{
 
     //Codeigniter : Write Less Do More
 
-    $this->load->model('usuario_modelo');
+    $this->load->model('Usuario_modelo');
   }
 
   function index()
@@ -28,19 +28,16 @@ class Seguridad extends CI_Controller{
     function login() {
       //$data["titulo"]="Error en Login";
       $usuario = $_POST['usuario'];
-      $clave = $_POST['pass'];
-      $tmp = $this->usuario_modelo->iniciarSesion($usuario, $clave);
-var_dump($tmp);
+      $clave = $_POST['clave'];
+      $tmp = $this->Usuario_modelo->iniciarSesion($usuario, $clave);
       if ($tmp !== false) {
         $this->session->usuario = $tmp;
-        $_SESSION['nombre'] = $usuario;
-        redirect('mascotas/registro');
+        print "<script type=\"text/javascript\">alert('Bienvenido {$usuario}'); window.location.href = \"/veterinaria/mascotas/registro\";
+        </script>";
       }else{
-        echo "error";
+        print "<script type=\"text/javascript\">alert('Usuario o contrasena
+        incorrectos'); window.location.href = \"/veterinaria/seguridad/\";
+        </script>";
       }
-      var_dump($this->session->usuario);
-    }
-    function registro(){
-      redirect('usuario');
     }
 }

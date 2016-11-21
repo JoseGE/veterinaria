@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'mascotas',
+	'hostname' => 'sql201.byethost4.com',
+	'username' => 'b4_19112259',
+	'password' => '152220',
+	'database' => 'b4_19112259_mascotas',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

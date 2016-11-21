@@ -12,9 +12,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="<?php echo base_url('mascotas');?>">Ver Listado</a></li>
+        <li><a href="<?php echo base_url('mascotas');?>">Ver Mascotas</a></li>
         <?php if(isset($this->session->usuario)){?>
-        <li><a href="<?php echo base_url('mascotas/registro');?>">Agregar Mascotas</a></li>
+        <li><a href="<?php echo base_url('mascotas/registro');?>">Agregar</a></li>
         <?php } ?>
       </ul>
 
