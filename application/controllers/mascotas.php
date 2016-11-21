@@ -6,20 +6,28 @@ class Mascotas extends CI_Controller{
   public function __construct()
   {
     parent::__construct();
+
     $this->load->model(array('mascotas_modelo'));
     //Codeigniter : Write Less Do More
   }
 
   function index()
   {
-
+    $data['titulo'] = "Veterinaria";
+    //lista todas las mascotas para crear una lista y mostrarla en la principal
+    $data['mascotas'] = $this->mascotas_modelo->mascotas();
+    $this->load->view('secciones/inicio',$data);
 
   }
 
   function registro()
   {
+    if(!(isset($this->session->usuario)) && $this->session->usuario==0){
+      redirect('seguridad');
+    }
     $data['titulo'] = "Registro de Mascotas";
     $this->load->view('secciones/registro', $data);
+
 
   }
 
@@ -30,7 +38,6 @@ class Mascotas extends CI_Controller{
       }else{
         $_POST['foto']='N';
       }
-      var_dump($_POST);
       $id=$this->mascotas_modelo->regMascota($_POST);
       $this->mascotas_modelo->subir_fichero($id);
     }
